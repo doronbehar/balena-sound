@@ -1,6 +1,11 @@
 FROM balenaplayground/balenalabs-audio:%%BALENA_MACHINE_NAME%%
 
+# To install piano-firmware
+RUN install_packages rsync
+
 WORKDIR /usr/src
 COPY . .
+
+COPY piano-firmware .
 
 CMD [ "/bin/bash", "/usr/src/start.sh" ]

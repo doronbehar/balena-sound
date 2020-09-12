@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+# We can't run this command in Dockerfile
+mount -o remount,rw /lib/firmware
+# rsync is better then cp, since I we can never know whether this is our first
+# run inside the docker image, or not.
+rsync -r /usr/src/piano-firmware/lib/firmware/allo/ /lib/firmware/allo/
+amixer -c0 sset "Subwoofer mode" 2.1
+
 # PulseAudio configuration files for balena-sound
 CONFIG_TEMPLATE=/usr/src/balena-sound.pa
 CONFIG_FILE=/etc/pulse/balena-sound.pa

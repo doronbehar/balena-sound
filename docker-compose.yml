@@ -12,6 +12,8 @@ services:
     privileged: true
     labels:
       io.balena.features.dbus: 1
+      # To install ./core/audio/piano-firmware/
+      io.balena.features.firmware: 1
     ports:
       - 4317:4317
     volumes:
