@@ -3,6 +3,7 @@ version: '2'
 volumes:
   spotifycache:
   snapcast:
+  mpd:
 
 services:
 
@@ -68,3 +69,13 @@ services:
     network_mode: host
     ports:
       - 49494:49494
+
+  mpd:
+    build: ./plugins/mpd
+    # This needs privileges for mounting with cifs
+    privileged: true
+    network_mode: host
+    volumes:
+      - mpd:/var/lib/mpd
+    ports:
+      - 6600:6600

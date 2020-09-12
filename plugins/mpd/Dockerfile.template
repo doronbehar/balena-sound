@@ -1,0 +1,12 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:sid
+
+RUN apt-get update && apt-get install -yq --no-install-recommends \
+	mpd ncmpcpp cifs-utils smbclient pulseaudio
+
+# Start app
+COPY mpd.conf /etc/mpd.conf
+
+COPY start-mpd.sh /usr/src/start-mpd.sh
+COPY mount-cifs.sh /usr/src/mount-cifs.sh
+
+CMD ["/bin/bash", "/usr/src/start-mpd.sh"]
