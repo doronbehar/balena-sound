@@ -1,0 +1,10 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:sid
+
+RUN install_packages mpdscribble
+
+COPY mpdscribble.conf /etc/mpdscribble.conf
+
+# Start app
+COPY start-mpdscribble.sh /usr/src/start-mpdscribble.sh
+
+CMD ["/bin/bash", "/usr/src/start-mpdscribble.sh"]

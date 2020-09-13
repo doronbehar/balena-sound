@@ -79,3 +79,7 @@ services:
       - mpd:/var/lib/mpd
     ports:
       - 6600:6600
+
+  scrobbler:
+    build: ./plugins/scrobbler
+    network_mode: host
