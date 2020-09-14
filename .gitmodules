@@ -1,6 +1,3 @@
 [submodule "core/audio/piano-firmware"]
 	path = core/audio/piano-firmware
 	url = https://github.com/allocom/piano-firmware
-[submodule "plugins/mympd/myMPD"]
-	path = plugins/mympd/myMPD
-	url = https://github.com/jcorporation/myMPD
