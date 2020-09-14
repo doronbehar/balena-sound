@@ -1,0 +1,7 @@
+#!/bin/sh
+
+xset s off -dpms
+
+exec firefox \
+	--window-size="$(cat /sys/class/graphics/fb0/virtual_size)" \
+	--kiosk 'http://127.0.0.1:8080'

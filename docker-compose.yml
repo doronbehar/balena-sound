@@ -83,3 +83,18 @@ services:
   scrobbler:
     build: ./plugins/scrobbler
     network_mode: host
+
+  xdisplay:
+    build: ./plugins/xdisplay
+    network_mode: host
+    # For udev
+    privileged: true
+
+  # MPD web client that's accessed by firefox at xdisplay
+  mympd:
+    build: ./plugins/mympd
+    network_mode: host
+    volumes:
+      - mpd:/var/lib/mpd
+    ports:
+      - 8080:8080

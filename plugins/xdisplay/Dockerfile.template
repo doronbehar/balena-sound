@@ -1,0 +1,26 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:sid
+
+# Install desktop environment
+RUN install_packages \
+    xserver-xorg-video-fbdev \
+    xserver-xorg-input-evdev \
+    xserver-xorg \
+    xinit \
+    x11-xserver-utils \
+    firefox
+
+# RUN install_packages \
+    # xfonts-75dpi xfonts-100dpi xfonts-cyrillic
+
+RUN install_packages xdotool
+
+# Setting working directory
+WORKDIR /usr/src/app
+
+COPY start.sh ./
+
+ENV UDEV=1
+
+COPY xinitrc /root/.xinitrc
+
+CMD ["/bin/bash", "start.sh"]
