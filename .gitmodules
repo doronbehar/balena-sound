@@ -1,3 +1,0 @@
-[submodule "core/audio/piano-firmware"]
-	path = core/audio/piano-firmware
-	url = https://github.com/allocom/piano-firmware

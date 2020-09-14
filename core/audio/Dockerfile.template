@@ -6,6 +6,8 @@ RUN install_packages rsync
 WORKDIR /usr/src
 COPY . .
 
-COPY piano-firmware .
+RUN install_packages git
+
+RUN git clone https://github.com/allocom/piano-firmware /usr/src/piano-firmware
 
 CMD [ "/bin/bash", "/usr/src/start.sh" ]
